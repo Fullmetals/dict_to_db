@@ -1,4 +1,4 @@
-# dictionary_to_db
+# dict_to_db
 # Dictionary Search Project
 
 This project allows users to search for vocabulary words using a free dictionary API and stores the search results, including word definitions, parts of speech, and meanings, in a SQL database. The frontend is built with HTML and styled with CSS, while the backend is powered by Python, interfacing with the database using SQL queries.
