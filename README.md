@@ -21,13 +21,13 @@ This project allows users to search for vocabulary words using a free dictionary
 
 - To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+## Prerequisites
 
 - Python 3.x
 - Pip (Python package installer)
 - SQL database (SQLite/MySQL/PostgreSQL)
 
-### Installation
+## Installation
 
 1. Clone the repository:
    ```sh
