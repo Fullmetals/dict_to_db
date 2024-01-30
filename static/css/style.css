@@ -55,6 +55,12 @@ button:hover {
   margin: 20px;
 }
 
+#searchForm {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+}
+
 #searchInput {
   width: 30%;
   height: 40px;
