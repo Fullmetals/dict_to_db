@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function fetchResults(word) {
-    // Replace with the correct URL to your backend server
+    // Replace with the correct URL to backend server
     const apiURL = `http://localhost:5000/search/${word}`;
 
     fetch(apiURL)
