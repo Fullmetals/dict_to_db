@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary Search</title>
-    <link rel="stylesheet" href="static/css/style.css">
-</head>
-<body>
-    <div class="search-container">
-        <h1>Dictionary Search</h1>
-        <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Enter a word..." required>
-            <button type="submit">Search</button>
-        </form>
-        <div id="resultSection">
-            <!-- Search results will be displayed here -->
-        </div>
-    </div>
+{% extends "layout.html" %}
 
-    <script src="static/js/script.js"></script>
-</body>
-</html>
+{% block title %}
+Dictionary Search
+{% endblock %}
+
+{% block content %}
+<div class="search-container"> 
+    <h1>CS50 Final Project</h1>
+    <h2>Dictionary Search</h2>
+    <form id="searchForm" method="get" action="/search"> <!-- Ensure the method and action are set correctly -->
+        <input type="text" id="searchInput" name="q" placeholder="Enter a word..." required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="resultSection">
+        <!-- Search results will be displayed here -->
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

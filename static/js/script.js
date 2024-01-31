@@ -1,39 +1,26 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const searchForm = document.getElementById('searchForm');
-    searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const word = document.getElementById('searchInput').value;
-        fetchResults(word);
-    });
-});
-
-function fetchResults(word) {
-    // Replace with the correct URL to backend server
-    const apiURL = `http://localhost:5000/search/${word}`;
-
-    fetch(apiURL)
+document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const wordToSearch = document.getElementById('searchInput').value;
+    // Fetch the dictionary data
+    fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + wordToSearch)
         .then(response => response.json())
         .then(data => {
-            displayResults(data);
+            // Process and display data in resultsContainer
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = ''; // Clear previous results
+            data.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `
+                    <h3 class="word">${result.word}</h3>
+                    <p class="partOfSpeech">${result.partOfSpeech}</p>
+                    <p class="definition">${result.definition}</p>
+                `;
+                resultsContainer.appendChild(resultItem);
+            });
         })
         .catch(error => {
             console.error('Error fetching data: ', error);
-            displayResults({ error: "An error occurred while fetching data." });
+            // Handle errors here
         });
-}
-
-function displayResults(data) {
-    const resultSection = document.getElementById('resultSection');
-    resultSection.innerHTML = ''; // Clear previous results
-
-    if (data.error) {
-        resultSection.innerHTML = `<p>${data.error}</p>`;
-    } else {
-        // Assuming `data` is an array of dictionary entries
-        data.forEach(entry => {
-            const div = document.createElement('div');
-            div.innerHTML = `<h2>${entry.word}</h2><p>${entry.definition}</p>`;
-            resultSection.appendChild(div);
-        });
-    }
-}
+});
